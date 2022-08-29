@@ -18,7 +18,7 @@ function formatInput(inputStr) {
 // sort top 3 teams by overall score
 function logTopThree(scoreMap, currentDay) {
   finalOutputToAdd = "";
-  let topThreeTeams = Object.entries(scoreMap)
+  let topThreeTeams = Object.entries(scoreMap).sort()
     .sort((a, b) => {
       return b[1] - a[1];
     })
@@ -70,6 +70,7 @@ function solutionFunc(input) {
   return finalOutput;
 }
 console.log(
-  solutionFunc(testInput)
+
+    solutionFunc(testInput)
 );
 module.exports = solutionFunc;
