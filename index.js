@@ -15,18 +15,28 @@ function formatInput(inputStr) {
     });
   });
 }
-
+// sort top 3 teams by overall score
 function logTopThree(scoreMap, currentDay) {
-    let topThreeTeams = Object.entries(scoreMap).sort((a, b)=>{return b[1]-a[1]}).slice(0, 3)
-  
-  console.log("\nMatchday " + currentDay);
+  finalOutputToAdd = "";
+  let topThreeTeams = Object.entries(scoreMap)
+    .sort((a, b) => {
+      return b[1] - a[1];
+    })
+    .slice(0, 3);
+
+  finalOutputToAdd += "Matchday " + currentDay;
   topThreeTeams.forEach((team) => {
-    console.log(`${team[0]}, ${team[1]} pts`)
-  })
+    finalOutputToAdd += `\n${team[0]}, ${team[1]} ${
+      team[1] == 1 ? `pt` : `pts`
+    }`;
+  });
+  finalOutputToAdd += "\n\n";
+  return finalOutputToAdd;
 }
 
 function solutionFunc(input) {
   const formattedInput = formatInput(input);
+  let finalOutput = "";
   let seenTeams = [];
   let currentDay = 1;
   const scoreMap = {};
@@ -34,7 +44,7 @@ function solutionFunc(input) {
     const teamOne = game[0];
     const teamTwo = game[1];
     if (seenTeams.includes(teamOne[0]) || seenTeams.includes(teamTwo[0])) {
-      logTopThree(scoreMap, currentDay);
+      finalOutput += logTopThree(scoreMap, currentDay);
 
       currentDay += 1;
       seenTeams = [];
@@ -55,21 +65,11 @@ function solutionFunc(input) {
     }
     seenTeams.push(teamOne[0]);
     seenTeams.push(teamTwo[0]);
-
-    // console.log(currentDay, game);
   });
-  logTopThree(scoreMap, currentDay);
-  //   console.log(scoreMap);
-
-  //   console.log(formattedInput);
-  //   for loop,
-  // make sure each name is unique- if not, then end of matchday
-  //
-  //   separate top 3 scores in each matchday
-  //
-  //   map of teams with scores
-
-  //
+  finalOutput += logTopThree(scoreMap, currentDay);
+  return finalOutput;
 }
+console.log(solutionFunc(testInput));
+module.exports = solutionFunc;
 
-solutionFunc(testInput);
+// export default solutionFunc;
