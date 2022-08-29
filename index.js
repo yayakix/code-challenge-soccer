@@ -20,11 +20,34 @@ function solutionFunc(input) {
   const formattedInput = formatInput(input);
   let seenTeams = [];
   let currentDay = 1;
+  const scoreMap = {};
   formattedInput.forEach((game) => {
     const teamOne = game[0];
     const teamTwo = game[1];
-    console.log("TEAM ONE IS", teamOne);
-    console.log("TEAM TWO IS", teamTwo);
+    if (seenTeams.includes(teamOne[0]) || seenTeams.includes(teamTwo[0])) {
+      currentDay += 1;
+      seenTeams = [];
+    }
+    if (!(teamOne[0] in scoreMap)) {
+      scoreMap[teamOne[0]] = 0;
+    }
+    if (!(teamTwo[0] in scoreMap)) {
+      scoreMap[teamTwo[0]] = 0;
+    }
+    if (teamOne[1] == teamTwo[1]) {
+      scoreMap[teamOne[0]] += 1;
+      scoreMap[teamTwo[0]] += 1;
+    } else if (teamOne[1] > teamTwo[1]) {
+      scoreMap[teamOne[0]] += 3;
+    } else if (teamOne[1] < teamTwo[1]) {
+      scoreMap[teamTwo[0]] += 3;
+    }
+    console.log(scoreMap)
+    seenTeams.push(teamOne[0]);
+    seenTeams.push(teamTwo[0]);
+
+    // console.log(currentDay, game);
+    
   });
   //   console.log(formattedInput);
   //   for loop,
