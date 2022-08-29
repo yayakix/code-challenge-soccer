@@ -71,5 +71,3 @@ function solutionFunc(input) {
 }
 console.log(solutionFunc(testInput));
 module.exports = solutionFunc;
-
-// export default solutionFunc;

@@ -4,7 +4,8 @@
   "description": "soccer code challenge",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "node index.js"
   },
   "author": "iyana m",
   "license": "ISC",
