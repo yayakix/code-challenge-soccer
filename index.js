@@ -71,8 +71,7 @@ function solutionFunc(input) {
   return finalOutput;
 }
 console.log(
-
-    solutionFunc(testInput)
+  solutionFunc(testInput)
 );
 // export function to test file
 module.exports = solutionFunc;
