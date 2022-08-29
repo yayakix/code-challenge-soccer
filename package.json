@@ -1,0 +1,11 @@
+{
+  "name": "soccer_teams",
+  "version": "1.0.0",
+  "description": "soccer code challenge",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "iyana m",
+  "license": "ISC"
+}
