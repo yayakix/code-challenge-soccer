@@ -16,6 +16,15 @@ function formatInput(inputStr) {
   });
 }
 
+function logTopThree(scoreMap, currentDay) {
+    let topThreeTeams = Object.entries(scoreMap).sort((a, b)=>{return b[1]-a[1]}).slice(0, 3)
+  
+  console.log("\nMatchday " + currentDay);
+  topThreeTeams.forEach((team) => {
+    console.log(`${team[0]}, ${team[1]} pts`)
+  })
+}
+
 function solutionFunc(input) {
   const formattedInput = formatInput(input);
   let seenTeams = [];
@@ -25,6 +34,8 @@ function solutionFunc(input) {
     const teamOne = game[0];
     const teamTwo = game[1];
     if (seenTeams.includes(teamOne[0]) || seenTeams.includes(teamTwo[0])) {
+      logTopThree(scoreMap, currentDay);
+
       currentDay += 1;
       seenTeams = [];
     }
@@ -42,13 +53,14 @@ function solutionFunc(input) {
     } else if (teamOne[1] < teamTwo[1]) {
       scoreMap[teamTwo[0]] += 3;
     }
-    console.log(scoreMap)
     seenTeams.push(teamOne[0]);
     seenTeams.push(teamTwo[0]);
 
     // console.log(currentDay, game);
-    
   });
+  logTopThree(scoreMap, currentDay);
+  //   console.log(scoreMap);
+
   //   console.log(formattedInput);
   //   for loop,
   // make sure each name is unique- if not, then end of matchday
