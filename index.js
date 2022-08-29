@@ -36,6 +36,7 @@ function logTopThree(scoreMap, currentDay) {
 
 function solutionFunc(input) {
   const formattedInput = formatInput(input);
+//   console.log(formattedInput)
   let finalOutput = "";
   let seenTeams = [];
   let currentDay = 1;
@@ -73,4 +74,5 @@ console.log(
 
     solutionFunc(testInput)
 );
+// export function to test file
 module.exports = solutionFunc;
