@@ -69,5 +69,7 @@ function solutionFunc(input) {
   finalOutput += logTopThree(scoreMap, currentDay);
   return finalOutput;
 }
-console.log(solutionFunc(testInput));
+console.log(
+  solutionFunc(testInput)
+);
 module.exports = solutionFunc;
